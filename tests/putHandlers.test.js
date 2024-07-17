@@ -33,14 +33,6 @@ test(`should return status 200 ok when modifying the kit`, async () => {
   }
   expect(responseStatus).toBe(200);
 });
-/*test('response should contain expected data', async () => {
-  const response = await fetchKit(3, requestBody);
-  const responseData = await response.json().catch(() => ({}));  // Handle potential parsing errors
-  expect(responseData.name).toBe("Updated Empty Kit");
-  expect(responseData.cardId).toBe(1);
-  // responseBody = response.json();
-
-});*/
 test('response should contain expected data', async () => {
   let responseBody;
   try {
