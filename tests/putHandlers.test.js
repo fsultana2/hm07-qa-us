@@ -1,18 +1,68 @@
-// eslint-disable-next-line no-undef
 const config = require('../config');
 
-const requestBody = {}
+// Define the request body for the empty kit update
+const requestBody = {
+  "name": "Updated Empty Kit"
+};
+const requestBodyPost = {
+  "name": "new Kit",
+  "cardId": 1
+}
+test(`should return status 200 ok when modifying the kit`, async () => {
+  let responseStatus;
+  try {
+    const responsePost = await fetch(`${config.API_URL}/api/v1/kits`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(requestBodyPost)
+    });
+    const responseBodyPost = await responsePost.json();
+    const kitId = responseBodyPost["id"];
+    const response = await fetch(`${config.API_URL}/api/v1/kits/${kitId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(requestBody)
+    });
+    responseStatus = response.status;
+  } catch (error) {
+    console.error(error);
+  }
+  expect(responseStatus).toBe(200);
+});
+/*test('response should contain expected data', async () => {
+  const response = await fetchKit(3, requestBody);
+  const responseData = await response.json().catch(() => ({}));  // Handle potential parsing errors
+  expect(responseData.name).toBe("Updated Empty Kit");
+  expect(responseData.cardId).toBe(1);
+  // responseBody = response.json();
 
-test('', async () => {
-    try {
-		const response = await fetch(`${config.API_URL}/your/endpoint`, {
-			method: 'PUT',
-			headers: {
-			'Content-Type': 'application/json'
-			},
-			body: JSON.stringify(requestBody)
-		});
-	} catch (error) {
-		console.error(error);
-	}
+});*/
+test('response should contain expected data', async () => {
+  let responseBody;
+  try {
+    const responsePost = await fetch(`${config.API_URL}/api/v1/kits`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(requestBodyPost)
+    });
+    const responseBodyPost = await responsePost.json();
+    const kitId = responseBodyPost["id"];
+    const response = await fetch(`${config.API_URL}/api/v1/kits/${kitId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(requestBody)
+    });
+    responseBody = await response.json();
+  } catch (error) {
+    console.error(error);
+  }
+  expect(responseBody["ok"]).toBeTruthy(); // BOOLEAN FACTOR 
 });
