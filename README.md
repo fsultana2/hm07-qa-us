@@ -1,4 +1,13 @@
 # Sprint 7 project
+# project name: hm07-qa-us
+# Project description: 
+This project is a test automation framework for the HM07-qa-us project. This project involves writing  tests for the Urban Grocers API using Jest. The goal is to ensure the API endpoints function correctly by validating the response status codes and response bodies for GET, POST, PUT, and DELETE requests. The project is structured around five key tasks, each focusing on a different type of HTTP request.
+Task 1: Tests for GET Requests (getHandlers.test.js)
+Task 2: Tests for POST Requests(PostHandlers.test.js)
+Task 3: Tests for PUT Requests(putHandlers.test.js)
+Task 4: Tests for DELETE Requests (deleteHandlers.test.js)
+Task 5: Write README.md
+
 # Linking GitHub Account and Setting Up Local Repository
 To begin working on Project 7, follow these steps to link your GitHub account and clone the repository to your local computer.
 Step 1: Link Your GitHub Account
